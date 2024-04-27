@@ -10,48 +10,58 @@ document.addEventListener('DOMContentLoaded', function() {
         var items = {};
         var totalAmount = 0;
         var totalValue = 0;
-
+    
         // Parse textarea content
         var lines = textareaContent.split('\n');
-        var itemNames = lines.map(line => {
-            var parts = line.split('\t');
-            return parts.length > 0 ? parts[0] : null;
-        }).filter(Boolean); // Filter out null values
-
-        // Fetch item IDs for all item names
+        var itemNames = [];
+        var itemAmounts = {};
+        for (var i = 0; i < lines.length; i++) {
+            var parts = lines[i].split('\t');
+            var itemName = parts[0].trim(); // Trim whitespace from item name
+            var amount = parseFloat(parts[parts.length - 1]) || 1; // Default to 1 if no number found
+            if (itemName in items) {
+                // If item already exists, add amount to existing amount
+                itemAmounts[itemName] += amount;
+            } else {
+                // If item does not exist, add it to items object and initialize amount
+                itemNames.push(itemName);
+                itemAmounts[itemName] = amount;
+                items[itemName] = true;
+            }
+            totalAmount += amount;
+        }
+    
+        // Fetch item IDs for all unique item names
         var itemIDs = await fetchItemIDs(itemNames);
-
+    
         // Populate table
         var tableBody = document.getElementById('tableBody');
         tableBody.innerHTML = '';
         for (var i = 0; i < itemNames.length; i++) {
             var itemName = itemNames[i];
-            var amount = parseFloat(lines[i].split('\t').pop()) || 1; // Default to 1 if no number found
-            totalAmount += amount;
+            var amount = itemAmounts[itemName];
             var itemPrice = prices.find(price => price.type_id === itemIDs[i]);
             var singleValue = itemPrice ? itemPrice.average_price : null;
-            var value = singleValue ? singleValue * amount : null;
-            // Update the row generation code inside the loop to format the value
             var value = singleValue ? Math.floor(singleValue * amount) : null;
             if (itemPrice && singleValue !== null) {
                 totalValue += value;
             }
             var formattedValue = value !== null ? numberWithCommas(value) : 'N/A';
             var row = '<tr><td>' + itemName + '</td><td>' + amount + '</td><td>' + (formattedValue !== 'N/A' ? formattedValue : 'N/A') + '</td></tr>';
-            
             tableBody.innerHTML += row;
         }
-
+    
         // Populate table footer
         var tableFooter = document.getElementById('tableFooter');
         var formattedTotalValue = totalValue !== null ? numberWithCommas(totalValue) : 'N/A';
         var formattedTotalAmount = totalAmount !== null ? numberWithCommas(totalAmount) : 'N/A';
         tableFooter.innerHTML = '<tr><td>Total</td><td>' + formattedTotalAmount + '</td><td>' + formattedTotalValue + '</td></tr>';
-
+    
         // Show table if there are items, otherwise hide it
         var itemTable = document.getElementById('itemTable');
         itemTable.style.display = itemNames.length > 0 ? 'table' : 'none';
     }
+    
 
     async function fetchItemIDs(itemNames) {
         try {
