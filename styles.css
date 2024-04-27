@@ -1,0 +1,84 @@
+body {
+
+    /* Set background image */
+    background-image: url('assets/stars.jpg');
+
+    /* Set background size to cover entire screen */
+    background-size: cover;
+
+    /* Center the background image */
+    background-position: center;
+
+    /* Prevent background image from repeating */
+    background-repeat: no-repeat;
+
+    background-attachment: fixed; /* Make the background image fixed */
+
+    /* Ensure background image covers entire screen while maintaining aspect ratio */
+    height: 100vh;
+
+    color: white;
+}
+
+/* styles.css */
+
+h1 {
+    /* Center text horizontally */
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+    color: red;
+}
+
+.input-container {
+    margin-top: 10px;
+}
+
+textarea {
+    width: calc(80ch + 2em); /* Adjust as needed */
+    resize: vertical;
+    height: auto; /* Allow the textarea to expand vertically */
+}
+
+#itemTable {
+    margin: 20px auto; /* Center the table */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+#itemTable th,
+#itemTable td {
+    border: 1px solid #ddd; /* Add borders */
+    padding: 8px; /* Add padding */
+    text-align: left; /* Left-align text */
+}
+
+#itemTable th {
+    background-color: black; /* Light gray background for header cells */
+}
+
+#itemTable tfoot td {
+    font-weight: bold; /* Bold font for footer cells */
+}
+
+/* CSS styles to adjust column alignment */
+#itemTable th:first-child,
+#itemTable td:first-child {
+    text-align: left;
+}
+
+#itemTable th:nth-child(2),
+#itemTable td:nth-child(2) {
+    text-align: center;
+}
+
+#itemTable th:nth-child(3),
+#itemTable td:nth-child(3) {
+    text-align: right;
+}

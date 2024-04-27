@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abyssal Runner Tools</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+</head>
+<body>
+    <h1>Abyssal Loot Calculator</h1>
+    <div class="container">
+        <form id="itemForm">
+        <h2>Insert your loot here:</h2>
+        <div class="input-container">
+            <textarea id="inputTextarea" rows="10" placeholder="Paste your loot here"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+        <table id="itemTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Value (ISK)</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Table body will be populated dynamically using JavaScript -->
+            </tbody>
+            <tfoot id="tableFooter">
+                <!-- Table footer for displaying total amount and total value -->
+            </tfoot>
+        </table>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
