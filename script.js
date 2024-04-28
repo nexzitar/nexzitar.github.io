@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var amount = itemAmounts[itemName];
             var itemPrice = prices.find(price => price.type_id === itemIDs[i]);
             var singleValue = itemPrice ? itemPrice.average_price : null;
+            if (itemName === "Triglavian Survey Database"){singleValue = 100000;}
             var value = singleValue ? Math.floor(singleValue * amount) : null;
             if (itemPrice && singleValue !== null) {
                 totalValue += value;
