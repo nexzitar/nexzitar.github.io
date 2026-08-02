@@ -1,195 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Frontview — Tools &amp; Templates for EU Freelancers</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Frontview: free and paid tools for EU freelancers — a free rate calculator, plus a full pricing calculator, invoicing templates, and a VAT-aware finance kit.">
-<!-- PINTEREST-CLAIM-TAG-GOES-HERE (owner initiates claim in Pinterest settings to get the meta tag, then we insert + push) -->
-<style>
-  :root{
-    --navy:#1f3864;
-    --green:#2e7d32;
-    --gold:#bf8f00;
-    --bg:#f7f8fa;
-    --panel:#ffffff;
-    --border:#d9dde3;
-    --text:#20242c;
-    --muted:#5b6270;
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;
-    padding:0 0 48px;
-  }
-  .wrap{max-width:860px;margin:0 auto;padding:40px 16px 0;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abyssal Runner Tools</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  header{text-align:center;margin-bottom:32px;}
-  .wordmark{
-    display:inline-block;
-    font-size:0.85rem;
-    font-weight:700;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--green);
-    margin-bottom:10px;
-  }
-  h1{
-    color:var(--navy);
-    font-size:1.9rem;
-    margin:0 0 10px;
-    line-height:1.25;
-  }
-  .subtitle{
-    color:var(--muted);
-    margin:0 auto;
-    max-width:560px;
-    font-size:1.02rem;
-  }
 
-  .cards{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:18px;
-    margin-top:8px;
-  }
-  @media(min-width:720px){
-    .cards{grid-template-columns:1fr 1fr 1fr;}
-  }
-
-  .card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px 20px 22px;
-    box-shadow:0 1px 3px rgba(0,0,0,0.05);
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .card h2{
-    color:var(--navy);
-    font-size:1.08rem;
-    margin:0;
-  }
-  .card p{
-    color:var(--muted);
-    font-size:0.9rem;
-    margin:0;
-    flex-grow:1;
-  }
-  .badge{
-    display:inline-block;
-    align-self:flex-start;
-    font-size:0.72rem;
-    font-weight:800;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    padding:4px 10px;
-    border-radius:999px;
-  }
-  .card.free{
-    border:2px solid var(--green);
-    background:#eef7ee;
-  }
-  .card.free .badge{
-    background:var(--green);
-    color:#fff;
-  }
-  .card.bundle{
-    border:2px solid var(--gold);
-    background:#fdf6e3;
-  }
-
-  .btn{
-    display:inline-block;
-    text-align:center;
-    background:var(--gold);
-    color:#2b2200;
-    font-weight:700;
-    font-size:0.9rem;
-    padding:10px 12px;
-    border-radius:7px;
-    text-decoration:none;
-  }
-  .btn:hover{opacity:0.9;}
-  .card.free .btn{
-    background:var(--green);
-    color:#fff;
-  }
-  .btn-row{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-  }
-
-  footer{
-    max-width:860px;
-    margin:36px auto 0;
-    padding:0 16px;
-    font-size:0.78rem;
-    color:var(--muted);
-    text-align:center;
-  }
-
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#12141a;
-      --panel:#1b1e26;
-      --border:#2b2f3a;
-      --text:#e7e9ee;
-      --muted:#9aa1af;
-    }
-    .card.free{background:#16241a;}
-    .card.bundle{background:#2a2410;}
-  }
-</style>
 </head>
 <body>
-
-<div class="wrap">
-  <header>
-    <span class="wordmark">Frontview</span>
-    <h1>Tools &amp; templates for EU freelancers</h1>
-    <p class="subtitle">Rate calculators and finance templates built specifically for solo consultants and
-      freelancers billing clients across the EU.</p>
-  </header>
-
-  <div class="cards">
-    <div class="card free">
-      <span class="badge">Free</span>
-      <h2>Rate Calculator</h2>
-      <p>Find the day rate, nominal hourly rate, and effective billable-hour rate you actually need to charge —
-        runs entirely in your browser, no signup, nothing sent anywhere.</p>
-      <a class="btn" href="https://nexzitar.github.io/rate-calculator/" target="_blank" rel="noopener">Open the free calculator</a>
+    <h1>Abyssal Loot Calculator</h1>
+    <div class="container">
+        <form id="itemForm">
+        <h2>Insert your loot here:</h2>
+        <div class="input-container">
+            <textarea id="inputTextarea" rows="10" placeholder="Paste your loot here"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+        <table id="itemTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Value (ISK)</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Table body will be populated dynamically using JavaScript -->
+            </tbody>
+            <tfoot id="tableFooter">
+                <!-- Table footer for displaying total amount and total value -->
+            </tfoot>
+        </table>
     </div>
-
-    <div class="card">
-      <h2>EU Freelancer Finance Kit</h2>
-      <p>VAT-aware invoice templates for domestic, cross-EU, and non-EU clients, an income &amp; expense tracker,
-        and a quarterly VAT/OSS checklist.</p>
-      <a class="btn" href="https://4497882059491.gumroad.com/l/FreelancerFinanceKit?utm_source=hub" target="_blank" rel="noopener">Get the Finance Kit</a>
-    </div>
-
-    <div class="card bundle">
-      <h2>Rate Calculator (full) &amp; Bundle</h2>
-      <p>Project pricing with a walk-away floor, a three-scenario comparison, and a sourced 8-country tax &amp;
-        day-rate reference. Or get it with the Finance Kit for less.</p>
-      <div class="btn-row">
-        <a class="btn" href="https://4497882059491.gumroad.com/l/bfhxgd?utm_source=hub" target="_blank" rel="noopener">Get the Rate Calculator</a>
-        <a class="btn" href="https://4497882059491.gumroad.com/l/Bundle?utm_source=hub" target="_blank" rel="noopener">Get the Bundle</a>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    Built with AI, human-checked. No cookies, no tracking on this page.
-  </footer>
-</div>
-
+<script src="script.js"></script>
 </body>
 </html>
